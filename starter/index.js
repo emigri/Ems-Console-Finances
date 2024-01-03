@@ -89,14 +89,39 @@ var finances = [
 
 // Number of months included in the dataset
 var months = (finances.length);{
-  console.log("Total months: " + months);
+  console.log("Total months: " + months)
 }
 // The net total amount of Profit/Losses over the entire period
+var totalSum = 0
+var incomeArray = []
+
+finances.forEach((finance) => {
+  totalSum += finance[1];
+  incomeArray.push(finance[1]); // .push creates a new array of the second element of the Finances array
+})
+console.log("Total: $" + totalSum)
 
 // * The average of the **changes** in Profit/Losses over the entire period.
 //   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
 //   * (`Total/(Number of months - 1)`)
+var totalProfitLoss = incomeArray.slice(1).map(function(number, index){
+  return number - incomeArray[index];
+}) 
+
+var averageLosses = 0
+incomeArray.forEach((Array) => {
+  averageLosses += Array[1];
+  totalProfitLoss / (finances.length - 1).toFixed(2);
+})
+
+// starting from the second index in the array (slice), .map creates an array with the function that uses the parameteres number and index and subtracts the number from the previous number in the index.
+// Create a forEach that will sum up the differences between each element.
+// Find the average by (totalProfitLoss / (finances.length - 1).tofixed(2) (decimal points))
+
+// Find the .indexOf the largest number by using Math.max
+// increaseDateandDifference = finances[greatestincreaseIndex +1][0] + " " + profitLossArray[greatestincreaseIndex];
 
 // * The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
+
 
 // * The greatest decrease in Profit/Losses (date and difference in the amounts) over the entire period.
