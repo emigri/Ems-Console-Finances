@@ -102,24 +102,43 @@ finances.forEach((finance) => {
 console.log("Total: $" + totalSum)
 
 // * The average of the **changes** in Profit/Losses over the entire period.
-//   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-//   * (`Total/(Number of months - 1)`)
-var totalProfitLoss = incomeArray.slice(1).map(function(number, index){
+
+// starting from the second index in the array (slice), .map creates an array with the function that uses the parameteres number and index and subtracts the number from the previous number in the index.
+var profitLossArray = incomeArray.slice(1).map(function(number, index){
   return number - incomeArray[index];
 }) 
 
-var averageLosses = 0
-incomeArray.forEach((Array) => {
-  averageLosses += Array[1];
-  totalProfitLoss / (finances.length - 1).toFixed(2);
-})
+// var averageLosses = 0
+// incomeArray.forEach((Array) => {
+//   averageLosses += Array[1];
+//   totalProfitLoss / (finances.length - 1).toFixed(2);
+// })
 
-// starting from the second index in the array (slice), .map creates an array with the function that uses the parameteres number and index and subtracts the number from the previous number in the index.
 // Create a forEach that will sum up the differences between each element.
 // Find the average by (totalProfitLoss / (finances.length - 1).tofixed(2) (decimal points))
+var totalLosses = 0
+profitLossArray.forEach((Array) => {
+  totalLosses += Array;
+})
+var averageLoss = (totalLosses / (finances.length - 1)).toFixed(2)
+
+console.log("Average Change: " + averageLoss)
 
 // Find the .indexOf the largest number by using Math.max
 // increaseDateandDifference = finances[greatestincreaseIndex +1][0] + " " + profitLossArray[greatestincreaseIndex];
+
+var greatestincrease = Math.max(...profitLossArray)
+var greatestdecrease = Math.min(...profitLossArray)
+var greatestincreaseIndex = profitLossArray.indexOf(Math.max(...profitLossArray))
+var greatestdecreaseIndex = profitLossArray.indexOf(Math.min(...profitLossArray))
+
+var increaseDateandDifference = "Greatest Increase in Profits/Losses:" + finances[greatestincreaseIndex+1][0] + " " + "$" + greatestincrease
+var decreaseDateandDifference = "Greatest decrease in Profits/Losses:" + finances[greatestdecreaseIndex+1][0] + " " + "$" + greatestdecrease
+
+console.log(increaseDateandDifference)
+console.log(decreaseDateandDifference)
+
+// var increaseDateandDifference = finances[greatestincreaseIndex +1][0] + " " + profitLossArray[greatestincreaseIndex]
 
 // * The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
 
