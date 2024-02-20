@@ -99,23 +99,15 @@ finances.forEach((finance) => {
   totalSum += finance[1];
   incomeArray.push(finance[1]); // .push creates a new array of the second element of the Finances array
 })
+
 console.log("Total: $" + totalSum)
 
 // * The average of the **changes** in Profit/Losses over the entire period.
-
-// starting from the second index in the array (slice), .map creates an array with the function that uses the parameteres number and index and subtracts the number from the previous number in the index.
 var profitLossArray = incomeArray.slice(1).map(function(number, index){
   return number - incomeArray[index];
 }) 
 
-// var averageLosses = 0
-// incomeArray.forEach((Array) => {
-//   averageLosses += Array[1];
-//   totalProfitLoss / (finances.length - 1).toFixed(2);
-// })
-
 // Create a forEach that will sum up the differences between each element.
-// Find the average by (totalProfitLoss / (finances.length - 1).tofixed(2) (decimal points))
 var totalLosses = 0
 profitLossArray.forEach((Array) => {
   totalLosses += Array;
@@ -126,9 +118,6 @@ console.log("Average Change: " + averageLoss)
 
 
 // * The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
-// Find the .indexOf the largest number by using Math.max
-// increaseDateandDifference = finances[greatestincreaseIndex +1][0] + " " + profitLossArray[greatestincreaseIndex];
-
 var greatestincrease = Math.max(...profitLossArray)
 var greatestincreaseIndex = profitLossArray.indexOf(Math.max(...profitLossArray))
 var increaseDateandDifference = "Greatest Increase in Profits/Losses:" + finances[greatestincreaseIndex+1][0] + " " + "$" + greatestincrease
